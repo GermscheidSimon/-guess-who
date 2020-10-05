@@ -28,7 +28,7 @@ function appendImgs() {
 }
 
 function pickPerson() {
-    let maxIndex = people.length - 1
+    let maxIndex = people.length - 1;
     thisRound = people[randomNumber(0, maxIndex)];
    // return to user that they need to find the person whos username is given object username
    alert(thisRound.githubUsername)
@@ -41,12 +41,15 @@ function randomNumber(min, max){
 
 function readData() {
     let userAnswer = $(this).closest('div').data('username')
-    console.log(userAnswer);
+    console.log('the user selected', userAnswer);
     
     // is the userselected img the person whos username was given originally
     if (thisRound.githubUsername === userAnswer) {
         alert('Great Job!');
+        if (confirm('Select OK to play again!')) {
+            pickPerson();
+        }
     } else {
-        alert('oops! wrong answer!');
+        alert('oops! wrong answer! try again!');
     }
 }
